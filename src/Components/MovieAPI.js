@@ -15,17 +15,23 @@ export async function getTrendingMovies() {
   return data.results;
 }
 export async function getTopRatedMovies() {
-     const response = await fetch(
-  `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`);
+  const response = await fetch(
+    `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`,
+  );
   const data = await response.json();
   return data.results;
 }
 export async function getMovieDetails(id) {
+  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+  const data = await response.json();
 
-  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
-
-  const data = await response.json()
-
-  return data
-
+  return data;
 }
+export async function searchmovie(title) {
+  const response = await fetch(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${title}`
+  );
+  const data = await response.json();
+  return data;
+}
+//------- result رو الان اد کردم-------------

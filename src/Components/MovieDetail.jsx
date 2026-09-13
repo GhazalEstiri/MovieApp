@@ -16,15 +16,12 @@ function MovieDetail() {
     fetchMovie();
   }, [id]);
 
-
   if (!movie) {
     return <p>Loading...</p>;
   }
 
-
   return (
-    <div>
-
+    <div className="text-white">
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
@@ -34,23 +31,15 @@ function MovieDetail() {
 
       <p>{movie.overview}</p>
 
-      <p>
-        ⭐ {movie.vote_average}
-      </p>
+      <p>⭐ {movie.vote_average}</p>
 
-      <p>
-        Release: {movie.release_date}
-      </p>
-
+      <p>Release: {movie.release_date}</p>
 
       <div>
         {movie.genres.map((genre) => (
-          <span key={genre.id}>
-            {genre.name}
-          </span>
+          <span key={genre.id}>{genre.name}</span>
         ))}
       </div>
-
     </div>
   );
 }
