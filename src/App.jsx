@@ -6,6 +6,7 @@ import MovieDetail from "./Components/MovieDetail";
 // import Search from "./Components/Search"
 import Category from "./Components/Category";
 import Position from "./Position";
+import Favorite from "./Favotite";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/movie/:id" element={<MovieDetail />} />
         <Route path="/position/:position" element={<Position/>}/>
         <Route path="/category/:CategoryId" element={<Category/>}/>
+        <Route path="/favorite" element={<Favorite/>}/>
       </Routes>
     </BrowserRouter>
   );

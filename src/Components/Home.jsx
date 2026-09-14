@@ -108,6 +108,7 @@ function Home() {
           <Link to="/position/popular">Popular</Link>
           <Link to="/position/trending">Trending</Link>
           <Link to="/position/top-rated">Top Rated</Link>
+          <Link to="/favorite">Favorite</Link>
         </div>
         <div>
           <input

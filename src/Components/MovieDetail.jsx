@@ -6,6 +6,10 @@ function MovieDetail() {
   const { id } = useParams();
 
   const [movie, setMovie] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    return favorites.some((item) => item.id === Number(id));
+  });
 
   useEffect(() => {
     async function fetchMovie() {
@@ -20,6 +24,22 @@ function MovieDetail() {
     return <p>Loading...</p>;
   }
 
+  const handlrFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    if (isFavorite) {
+      const newFavorite = favorites.filter((item) => item.id !== movie.id);
+      localStorage.setItem("favorites", JSON.stringify(newFavorite));
+      setIsFavorite(false);
+      console.log(newFavorite);
+    } else {
+      const newFavorite = [...favorites, movie];
+      localStorage.setItem("favorites", JSON.stringify(newFavorite));
+
+      setIsFavorite(true);
+      console.log(newFavorite);
+    }
+  };
+  console.log(isFavorite);
   return (
     <div className="text-white">
       <img
@@ -40,6 +60,9 @@ function MovieDetail() {
           <span key={genre.id}>{genre.name}</span>
         ))}
       </div>
+      <button className="" onClick={handlrFavorite}>
+        {isFavorite ? "❤️favorite" : " 🤍favorite"}
+      </button>
     </div>
   );
 }
