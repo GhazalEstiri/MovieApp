@@ -32,6 +32,14 @@ export async function searchmovie(title) {
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${title}`
   );
   const data = await response.json();
-  return data;
+  return data.results;
 }
-//------- result رو الان اد کردم-------------
+
+export async function getCategory() {
+  const response = await fetch(
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en`
+  );
+  const data = await response.json();
+  return data.genres;
+}
+

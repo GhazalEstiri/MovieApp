@@ -4,6 +4,7 @@ import Home from "./Components/Home";
 import MovieCard from "./Components/MovieCard";
 import MovieDetail from "./Components/MovieDetail";
 // import Search from "./Components/Search"
+import Category from "./Components/Category";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
         {/* <Route path="/search" element={<Search/>}/> */}
+        <Route path="/category/:CategoryId" element={<Category/>}/>
       </Routes>
     </BrowserRouter>
   );
