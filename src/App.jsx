@@ -5,6 +5,7 @@ import MovieCard from "./Components/MovieCard";
 import MovieDetail from "./Components/MovieDetail";
 // import Search from "./Components/Search"
 import Category from "./Components/Category";
+import Position from "./Position";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
-        {/* <Route path="/search" element={<Search/>}/> */}
+        <Route path="/position/:position" element={<Position/>}/>
         <Route path="/category/:CategoryId" element={<Category/>}/>
       </Routes>
     </BrowserRouter>

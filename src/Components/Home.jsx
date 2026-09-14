@@ -8,14 +8,13 @@ import {
   getMoveOfCategory,
 } from "../Components/MovieAPI";
 import MovieCard from "./MovieCard";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { Clapperboard } from "lucide-react";
 
 function Home() {
-  //   const { id } = useParams();
   const [popular, setPopular] = useState([]);
   const [trending, setTrending] = useState([]);
   const [topraited, setTopRaited] = useState([]);
@@ -84,32 +83,31 @@ function Home() {
     const categoryId = e.target.value;
     if (categoryId === "default") {
       setMovieCategory([]);
-      setSelectedCategory(categoryId)
+      setSelectedCategory(categoryId);
       return;
     }
     const moviesCategory = await getMoveOfCategory(categoryId);
     setMovieCategory(moviesCategory);
-    setSelectedCategory(categoryId)
+    setSelectedCategory(categoryId);
   }
-
 
   return (
     <section>
       <header className="flex gap-5 p-5 text-white flex-row justify-around items-center">
-        <h1 className="flex flex-row font-bold">
-          <Clapperboard className="text-red-700" />
-          Movie Site
-        </h1>
+        <Link to="/">
+          <h1 className="flex flex-row font-bold">
+            <Clapperboard className="text-red-700" />
+            Movie Site
+          </h1>
+        </Link>
         <div className="flex gap-5 p-5">
-          <Link to="/movie/Home" className="text-red-700">
+          <Link to="/" className="text-red-700">
             Home
           </Link>
 
-          <Link to="/movie/popular">Popular</Link>
-
-          <Link to="/movie/trending">Trending</Link>
-
-          <Link to="/movie/top-rated">Top Rated</Link>
+          <Link to="/position/popular">Popular</Link>
+          <Link to="/position/trending">Trending</Link>
+          <Link to="/position/top-rated">Top Rated</Link>
         </div>
         <div>
           <input
