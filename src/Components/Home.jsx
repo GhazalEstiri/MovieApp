@@ -5,9 +5,10 @@ import {
   getTopRatedMovies,
   searchmovie,
   getCategory,
+  getMoveOfCategory,
 } from "../Components/MovieAPI";
 import MovieCard from "./MovieCard";
-import { useParams, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
@@ -21,7 +22,8 @@ function Home() {
   const [search, setSearch] = useState([]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState([]);
-
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [movieCategory, setMovieCategory] = useState([]);
   async function getApi() {
     const popularData = await getPopularMovies();
     const trendingData = await getTrendingMovies();
@@ -76,7 +78,21 @@ function Home() {
   }
   useEffect(() => {
     getCategories();
-  }, [category]);
+  }, []);
+
+  async function handleSelectbox(e) {
+    const categoryId = e.target.value;
+    if (categoryId === "default") {
+      setMovieCategory([]);
+      setSelectedCategory(categoryId)
+      return;
+    }
+    const moviesCategory = await getMoveOfCategory(categoryId);
+    setMovieCategory(moviesCategory);
+    setSelectedCategory(categoryId)
+  }
+
+
   return (
     <section>
       <header className="flex gap-5 p-5 text-white flex-row justify-around items-center">
@@ -109,15 +125,31 @@ function Home() {
           />
         </div>
         <div>
-          <select name="Categories" id="Categories" className="bg-red-500">
-            <option>defult</option>
+          <select
+            name="Categories"
+            id="Categories"
+            value={selectedCategory}
+            onChange={handleSelectbox}
+            className="bg-red-500"
+          >
+            <option value="default">default</option>
             {category.map((c) => (
-              
-              <option key={c.id} value={c.id}>{c.name}</option>
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
             ))}
           </select>
         </div>
       </header>
+      {movieCategory.length > 0 && (
+        <div className="grid grid-cols-5 gap-5 p-10 text-white">
+          {movieCategory.map((movie) => (
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
+              <MovieCard movie={movie} />
+            </Link>
+          ))}
+        </div>
+      )}
 
       {search.length > 0 && (
         <div className="grid grid-cols-5 gap-5 p-10 text-white">
