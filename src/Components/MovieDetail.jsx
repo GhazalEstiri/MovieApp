@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../Components/MovieAPI";
 import { Heart, Star } from "lucide-react";
+import BackButton from "./ButtonBack"
 function MovieDetail() {
   const { id } = useParams();
 
@@ -97,7 +98,10 @@ function MovieDetail() {
           </button>
         </div>
 
-        <div className="w-80 z-20 mb-10">
+        <div className=" flex flex-col w-80 z-20 mb-10 gap-5 justify-center items-end" >
+          <div className="w-25 h-5 p-5 mt-6 flex items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-sm text-gray-200 hover:bg-red-600/80 hover:border-red-500 transition duration-300 ">
+            <BackButton />
+          </div>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}

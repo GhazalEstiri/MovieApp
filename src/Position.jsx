@@ -6,6 +6,8 @@ import {
 } from "./Components/MovieAPI";
 import { useParams, Link } from "react-router-dom";
 import MovieCard from "./Components/MovieCard";
+import BackButton from "./Components/ButtonBack";
+
 function Position() {
   const { position } = useParams();
   const [popular, setPopular] = useState([]);
@@ -30,12 +32,17 @@ function Position() {
 
   return (
     <section className="p-10">
-      <h1
-        className="text-white
-           font-bold text-[60px] sm:text-[50px] mt-10 mb-10 "
-      >
-        {position}
-      </h1>
+      <div className="flex flex-row justify-between items-center">
+        <h1
+          className="text-white
+           font-bold text-[60px] sm:text-[50px] mt-5 mb-10 uppercase"
+        >
+          {position}
+        </h1>
+        <div className=" h-5 p-5 flex items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-sm text-gray-200 hover:bg-red-600/80 hover:border-red-500 transition duration-300 ">
+          <BackButton />
+        </div>
+      </div>
       <div className="grid grid-cols-5 gap-5 text-white ">
         {position === "popular" &&
           popular.map((movie) => {
