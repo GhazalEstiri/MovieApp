@@ -1,4 +1,13 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(../src/assets/Montserrat-Regular.otf);
+}
+@font-face {
+    font-family: "Poppins";
+    src: url(../src/assets/poppins.regular.ttf);
+}
 body{
-background-color: #080D11;
+background-color: #050B14;
+font-family: "Poppins";
 }
 @import 'tailwindcss'
