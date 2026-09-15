@@ -24,13 +24,26 @@ function Home() {
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [movieCategory, setMovieCategory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [error, setError] = useState(false);
+
   async function getApi() {
-    const popularData = await getPopularMovies();
-    const trendingData = await getTrendingMovies();
-    const topRatedData = await getTopRatedMovies();
-    setPopular(popularData);
-    setTrending(trendingData);
-    setTopRaited(topRatedData);
+    try {
+      setLoading(true);
+      setError(false);
+      const popularData = await getPopularMovies();
+      const trendingData = await getTrendingMovies();
+      const topRatedData = await getTopRatedMovies();
+      setPopular(popularData);
+      setTrending(trendingData);
+      setTopRaited(topRatedData);
+    } catch (error) {
+      console.log(error);
+      setError(true)
+    } finally {
+      setLoading(false);
+    }
   }
   useEffect(() => {
     getApi();
@@ -60,7 +73,7 @@ function Home() {
     if (categoryId === "default") {
       setMovieCategory([]);
       setSelectedCategory(categoryId);
-      return;
+      return; 
     }
     const moviesCategory = await getMoveOfCategory(categoryId);
     setMovieCategory(moviesCategory);
@@ -217,7 +230,7 @@ function Home() {
             mysterious doctor.
           </p>
           <div className="flex flex-row gap-3">
-            <button className="bg-red-600 px-5 py-2 rounded-lg">
+            <button className="bg-red-600/80 px-5 py-2 rounded-lg">
               Watch trailer
             </button>
             <button className="border border-white  px-5 py-2 rounded-lg">
@@ -227,13 +240,17 @@ function Home() {
         </div>
       </section>
 
-      <div className="text-white p-10 gap-10 w-[95%] flex mx-auto flex-col">
-        <MovieSlider title="Popular Movies" movies={popular} />
+      {loading ? (
+        <div className="text-center text-xl text-[#A8B6D8]">Loading...</div>
+      ) : (
+        <div className="text-white p-10 gap-10 w-[95%] flex mx-auto flex-col">
+          <MovieSlider title="Popular Movies" movies={popular} />
 
-        <MovieSlider title="Trending Movies" movies={trending} />
+          <MovieSlider title="Trending Movies" movies={trending} />
 
-        <MovieSlider title="Top Rated Movies" movies={topraited} />
-      </div>
+          <MovieSlider title="Top Rated Movies" movies={topraited} />
+        </div>
+      )}
     </section>
   );
 }
