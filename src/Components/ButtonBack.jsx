@@ -7,7 +7,7 @@ function Back() {
     <>
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-white hover:text-gray-300 transition"
+        className="flex items-center gap-2 text-white hover:text-gray-300 transition cursor-pointer"
       >
         <ArrowLeft size={20} />
         Back
