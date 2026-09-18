@@ -12,7 +12,7 @@ import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
-import { Clapperboard, Search, Menu, X } from "lucide-react";
+import { Clapperboard, Search, Menu, X, CircleUserRound } from "lucide-react";
 import ShutterIdalnd from "../assets/shutteriland.jpg";
 
 function Home() {
@@ -153,17 +153,26 @@ function Home() {
       <header className="w-[95%] mx-auto text-white p-5 sm:p-7 lg:p-8">
         <div className="flex items-center justify-between gap-4">
           <Link to="/">
-            <h1 className="flex flex-row font-bold text-xl sm:text-3xl items-center gap-2">
+            <h1 className="flex flex-row font-bold text-sm sm:text-3xl items-center gap-2">
               <Clapperboard
                 size={35}
                 className="text-red-700 sm:w-[50px] sm:h-[50px]"
               />
-              <span>Movie Site</span>
+              <span className="text-sm md:text-3xl w-20 md:w-40" >Movie Site</span>
             </h1>
           </Link>
 
-          <Link to="/Login">Login</Link>
-
+          <Link
+            to="/Login"
+            className="flex items-center gap-2 px-2 py-1 md:px-3 md:py-1.5 rounded-xl
+             border border-white/15 bg-white/10 backdrop-blur-md
+             text-white  md:font-medium text-sm md:text-lg
+             hover:bg-[#FB2332] hover:border-[#FB2332]
+             transition-all duration-300 cursor-pointer"
+          >
+            <CircleUserRound size={30} strokeWidth={1} />
+            Login
+          </Link>
           <div className="hidden lg:flex items-center gap-2 xl:gap-5 text-sm xl:text-lg">
             <Link to="/" className="text-red-700">
               Home
