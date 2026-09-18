@@ -14,7 +14,7 @@ import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { Clapperboard, Search, Menu, X } from "lucide-react";
 import ShutterIdalnd from "../assets/shutteriland.jpg";
-import Login from "./Login";
+
 function Home() {
   const [popular, setPopular] = useState([]);
   const [trending, setTrending] = useState([]);
@@ -161,7 +161,7 @@ function Home() {
               <span>Movie Site</span>
             </h1>
           </Link>
-          
+
           <Link to="/Login">Login</Link>
 
           <div className="hidden lg:flex items-center gap-2 xl:gap-5 text-sm xl:text-lg">
