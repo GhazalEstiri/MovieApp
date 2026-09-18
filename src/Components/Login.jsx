@@ -25,35 +25,34 @@ function Login() {
     e.preventDefault();
 
     if (!name) {
-      setError("empty name");
+      setError("name is empty.");
       return;
     }
 
     if (!regexName.test(name)) {
-      setError("ridi name");
-      return;
-    }
-
-    if (!pasword) {
-      setError("empty pasword");
-      return;
-    }
-
-    if (!regexPasword.test(pasword)) {
-      setError("ridi pasword");
+      setError("name format is wrong.");
       return;
     }
 
     if (!email) {
-      setError("empty email");
+      setError("email is empty.");
       return;
     }
 
     if (!regexEmail.test(email)) {
-      setError("ridi email");
+      setError("email format is wrong");
       return;
     }
 
+     if (!pasword) {
+      setError("pasword is empty. ");
+      return;
+    }
+
+    if (!regexPasword.test(pasword)) {
+      setError("pasword format is wrong.");
+      return;
+    }
     login(name, email);
     setError("");
   };
