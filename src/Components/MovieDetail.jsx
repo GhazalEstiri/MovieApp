@@ -121,6 +121,7 @@ function MovieDetail() {
                     {movie.overview}
                   </p>
                 </div>
+
                 <button
                   onClick={handlrFavorite}
                   className="flex items-center w-fit p-3 sm:p-4 rounded-full border border-white/20 bg-white/10 backdrop-blur-md hover:bg-red-600  hover:border-red-500 transition duration-300 font-medium cursor-pointer"

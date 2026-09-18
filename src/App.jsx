@@ -7,6 +7,7 @@ import MovieDetail from "./Components/MovieDetail";
 import Category from "./Components/Category";
 import Position from "./Position";
 import Favorite from "./Favotite";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
-        <Route path="/position/:position" element={<Position/>}/>
-        <Route path="/category/:CategoryId" element={<Category/>}/>
-        <Route path="/favorite" element={<Favorite/>}/>
+        <Route path="/position/:position" element={<Position />} />
+        <Route path="/category/:CategoryId" element={<Category />} />
+        <Route path="/favorite" element={<Favorite />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

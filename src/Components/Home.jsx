@@ -14,7 +14,7 @@ import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { Clapperboard, Search, Menu, X } from "lucide-react";
 import ShutterIdalnd from "../assets/shutteriland.jpg";
-
+import Login from "./Login";
 function Home() {
   const [popular, setPopular] = useState([]);
   const [trending, setTrending] = useState([]);
@@ -109,7 +109,7 @@ function Home() {
   }
 
   const MovieSlider = ({ title, movies }) => {
-    console.log(position);
+    // console.log(position);
 
     return (
       <section className="w-full">
@@ -161,6 +161,8 @@ function Home() {
               <span>Movie Site</span>
             </h1>
           </Link>
+          
+          <Link to="/Login">Login</Link>
 
           <div className="hidden lg:flex items-center gap-2 xl:gap-5 text-sm xl:text-lg">
             <Link to="/" className="text-red-700">
@@ -206,7 +208,9 @@ function Home() {
               onChange={handleSelectbox}
               className="bg-[#0D1825] border-none text-[#F5F7FA] p-2 rounded-xl outline-none cursor-pointer"
             >
-              <option value="default " className="hover:cursor-pointer">default</option>
+              <option value="default " className="hover:cursor-pointer">
+                default
+              </option>
               {category.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
@@ -325,7 +329,7 @@ function Home() {
         )}
       </div>
 
-      <section className="relative h-[500px] sm:h-[550px] md:h-[600px] overflow-hidden rounded-xl w-full md:w-[90%] flex mx-auto">
+      <section className="relative h-[500px] sm:h-[550px] md:h-[600px] overflow-hidden rounded-xl w-full md:w-[90%] flex mx-auto mt-5">
         <img
           src={ShutterIdalnd}
           alt="Shutter Island"
